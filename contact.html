@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Level 6 — Contact</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container">
+
+<header class="header">
+  <div class="logo">
+    <svg viewBox="0 0 70 24">
+      <text x="0" y="18" font-family="Press Start 2P" font-size="18" fill="#ffb86b">RW</text>
+    </svg>
+  </div>
+
+  <div class="brand"><h1>Roberta Williams</h1></div>
+
+  <nav class="nav">
+    <a href="index.html">Level 1</a>
+    <a href="biographie.html">Level 2</a>
+    <a href="travaux.html">Level 3</a>
+    <a href="galerie.html">Level 4</a>
+    <a href="apropos.html">Level 5</a>
+    <a href="contact.html">Level 6</a>
+  </nav>
+</header>
+
+<main style="margin-top:20px">
+<section class="panel">
+
+  <div class="level-row">
+    <div class="level">LEVEL 6</div>
+  </div>
+
+  <h2 class="real-title">
+    <span class="glitch" data-text="Contact et sources">Contact et sources</span>
+  </h2>
+
+  <form id="contactForm">
+    <label>Nom</label>
+    <input type="text" id="name" required>
+
+    <label>Email</label>
+    <input type="email" id="email" required>
+
+    <label>Message</label>
+    <textarea id="message" required></textarea>
+
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <h3 class="title-pixel" style="margin-top:30px">Sources utilisées</h3>
+  <ul class="clean">
+    <li>IEEE Spectrum</li>
+    <li>Women, Art & Technology</li>
+    <li>SierraGamers.com</li>
+    <li>Creo Gaming</li>
+    <li>Wikipédia</li>
+    <li>GOG.com</li>
+    <li>Computer Gaming World Archives</li>
+    <li>News Xbox</li>
+    <li>HistoryLink.org</li>
+  </ul>
+
+</section>
+</main>
+
+</div>
+
+<div class="footer">Level 6 — Contact</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  const mail =
+    "mailto:ton_email@etud.univ.fr"
+    + "?subject=" + encodeURIComponent("Message depuis le mini-site")
+    + "&body=" + encodeURIComponent(
+        "Nom : " + name +
+        "\nEmail : " + email +
+        "\n\nMessage :\n" + message
+      );
+
+  window.location.href = mail;
+});
+</script>
+
+</body>
+</html>

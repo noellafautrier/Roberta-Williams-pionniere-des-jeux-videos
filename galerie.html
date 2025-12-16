@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Level 4 — Galerie</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container">
+
+  <!-- HEADER GLOBAL -->
+  <header class="header">
+    <div class="logo">
+      <svg viewBox="0 0 70 24">
+        <text x="0" y="18" font-family="Press Start 2P" font-size="18" fill="#ffb86b">RW</text>
+      </svg>
+    </div>
+
+    <div class="brand"><h1>Roberta Williams</h1></div>
+
+    <nav class="nav">
+      <a href="index.html">Level 1</a>
+      <a href="biographie.html">Level 2</a>
+      <a href="travaux.html">Level 3</a>
+      <a href="galerie.html">Level 4</a>
+      <a href="apropos.html">Level 5</a>
+      <a href="contact.html">Level 6</a>
+    </nav>
+  </header>
+
+  <main style="margin-top:20px">
+    <div class="panel">
+
+      <div class="level-row">
+        <div class="level">LEVEL 4</div>
+        <h2 class="real-title"><span class="glitch" data-text="Galerie">Galerie</span></h2>
+      </div>
+
+      <!-- FILTRE -->
+      <div class="filter-bar">
+        <label>Filtrer :</label>
+        <select id="filter">
+          <option value="all">Tout</option>
+          <option value="famille">Famille</option>
+          <option value="roberta">Roberta</option>
+          <option value="jeux">Jeux</option>
+          <option value="sierra">Sierra</option>
+        </select>
+      </div>
+
+      <!-- MASONRY GALLERY -->
+      <div class="gallery">
+
+        <figure data-cat="famille"><img src="photos/Famille Williams.jpg" data-caption="Famille Williams"><figcaption>Famille Williams</figcaption></figure>
+        <figure data-cat="sierra"><img src="photos/Kenneth-Roberta-Kings-Quest.jpg" data-caption="Kenneth & Roberta"><figcaption>Kenneth & Roberta</figcaption></figure>
+        <figure data-cat="jeux"><img src="photos/Kings-Quest-1.jpg" data-caption="King's Quest I"><figcaption>King's Quest I</figcaption></figure>
+        <figure data-cat="jeux"><img src="photos/Kings-Quest-2.jpg" data-caption="King's Quest II"><figcaption>King's Quest II</figcaption></figure>
+        <figure data-cat="jeux"><img src="photos/Kings-Quest-3.jpg" data-caption="King's Quest III"><figcaption>King's Quest III</figcaption></figure>
+        <figure data-cat="jeux"><img src="photos/Mystery-House.jpg" data-caption="Mystery House"><figcaption>Mystery House</figcaption></figure>
+        <figure data-cat="roberta"><img src="photos/Roberta.jpg" data-caption="Roberta Williams"><figcaption>Roberta Williams</figcaption></figure>
+        <figure data-cat="roberta"><img src="photos/Roberta-jeune.jpg" data-caption="Roberta jeune"><figcaption>Roberta jeune</figcaption></figure>
+        <figure data-cat="roberta"><img src="photos/Roberta-Ken.jpg" data-caption="Roberta & Ken"><figcaption>Roberta & Ken</figcaption></figure>
+        <figure data-cat="famille"><img src="photos/Roberta-Kenneth-wedding-day.jpg" data-caption="Mariage — Roberta & Ken"><figcaption>Mariage — Roberta & Ken</figcaption></figure>
+        <figure data-cat="roberta"><img src="photos/Roberta-sierragames.jpg" data-caption="Roberta — Sierra"><figcaption>Roberta — Sierra</figcaption></figure>
+        <figure data-cat="sierra"><img src="photos/Sierra-On-Line.jpg" data-caption="Sierra On-Line"><figcaption>Sierra On-Line</figcaption></figure>
+        <figure data-cat="jeux"><img src="photos/The-Wizard-and-the-Princess.jpg" data-caption="The Wizard and the Princess"><figcaption>The Wizard and the Princess</figcaption></figure>
+
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<div class="footer">Level 4 — Galerie</div>
+
+<!-- LIGHTBOX -->
+<div class="lb-overlay" id="lightbox">
+  <button class="lb-close" id="lbClose">Fermer ✕</button>
+  <img id="lbImage" class="lb-img">
+  <div id="lbCaption" class="lb-caption"></div>
+</div>
+
+<script>
+/* filtre */
+document.getElementById('filter').addEventListener('change', function(){
+  const val = this.value;
+  document.querySelectorAll('.gallery figure').forEach(fig=>{
+    fig.style.display = (val === 'all' || fig.dataset.cat === val) ? 'inline-block' : 'none';
+  });
+});
+
+/* lightbox */
+const lb = document.getElementById("lightbox");
+const lbImg = document.getElementById("lbImage");
+const lbCaption = document.getElementById("lbCaption");
+
+document.querySelectorAll(".gallery img").forEach(img=>{
+  img.addEventListener("click", ()=>{
+    lbImg.src = img.src;
+    lbCaption.textContent = img.dataset.caption || "";
+    lb.classList.add("active");
+  });
+});
+
+document.getElementById("lbClose").onclick = ()=> lb.classList.remove("active");
+lb.onclick = e => { if(e.target === lb) lb.classList.remove("active"); };
+</script>
+
+</body>
+</html>
